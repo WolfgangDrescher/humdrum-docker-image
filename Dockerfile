@@ -1,5 +1,7 @@
 FROM alpine:latest
 
+LABEL maintainer="drescher.wolfgang@gmail.com"
+
 RUN apk add git
 RUN apk add make
 RUN apk add gcc
