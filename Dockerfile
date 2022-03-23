@@ -17,4 +17,13 @@ RUN make update
 RUN make
 RUN make install
 
+# https://github.com/craigsapp/humlib/issues/49
+RUN apk add sudo
+WORKDIR /usr/local
+RUN git clone https://github.com/craigsapp/humlib
+WORKDIR /usr/local/humlib
+RUN make update
+RUN make
+RUN make install
+
 ENV PATH="/usr/local/humdrum-tools/humdrum/bin:/usr/local/humdrum-tools/humextra/bin:${PATH}"
