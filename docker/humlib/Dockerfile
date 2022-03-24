@@ -15,7 +15,8 @@ RUN apt-get update \
         libtool \
         curl \
         unzip \
-        sudo
+        sudo \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/local
 RUN git clone https://github.com/humdrum-tools/humdrum-tools
