@@ -2,14 +2,14 @@ FROM alpine:latest
 
 LABEL maintainer="drescher.wolfgang@gmail.com"
 
-RUN apk add git
-RUN apk add make
-RUN apk add gcc
-RUN apk add g++
-RUN apk add libc-dev
-RUN apk add automake
-RUN apk add autoconf
-RUN apk add libtool
+RUN apt-get install git
+RUN apt-get install make
+RUN apt-get install gcc
+RUN apt-get install g++
+RUN apt-get install libc-dev
+RUN apt-get install automake
+RUN apt-get install autoconf
+RUN apt-get install libtool
 WORKDIR /usr/local
 RUN git clone https://github.com/humdrum-tools/humdrum-tools
 WORKDIR /usr/local/humdrum-tools
@@ -18,7 +18,7 @@ RUN make
 RUN make install
 
 # https://github.com/craigsapp/humlib/issues/49
-RUN apk add sudo
+RUN apt-get install sudo
 WORKDIR /usr/local
 RUN git clone https://github.com/craigsapp/humlib
 WORKDIR /usr/local/humlib
