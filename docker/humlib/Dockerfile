@@ -14,7 +14,8 @@ RUN apt-get update \
         automake \
         libtool \
         curl \
-        unzip
+        unzip \
+        sudo
 
 WORKDIR /usr/local
 RUN git clone https://github.com/humdrum-tools/humdrum-tools
