@@ -24,4 +24,6 @@ RUN make update
 RUN make
 RUN make install
 
+WORKDIR /app
+
 ENV PATH="/usr/local/humdrum-tools/humdrum/bin:/usr/local/humdrum-tools/humextra/bin:${PATH}"
