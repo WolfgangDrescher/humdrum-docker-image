@@ -19,7 +19,7 @@ jobs:
             -
                 name: Build
                 run: |
-                    docker build -t $SCHEME docker/$SCHEME/Dockerfile
+                    docker build -t $SCHEME -f docker/$SCHEME/Dockerfile
             -
                 name: Deploy
                 run: |
