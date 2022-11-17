@@ -17,6 +17,8 @@ RUN apt-get update \
         unzip \
     && rm -rf /var/lib/apt/lists/*
 
+RUN ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+
 WORKDIR /usr/local
 RUN git clone https://github.com/humdrum-tools/humdrum-tools
 WORKDIR /usr/local/humdrum-tools
