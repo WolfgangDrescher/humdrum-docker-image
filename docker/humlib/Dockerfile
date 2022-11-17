@@ -20,6 +20,7 @@ RUN apt-get update \
 
 RUN mkdir -p /root/.ssh \
     && chmod 0700 /root/.ssh \
+    && ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa \
     && ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
 
 WORKDIR /usr/local
