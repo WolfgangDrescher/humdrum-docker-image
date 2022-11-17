@@ -23,14 +23,14 @@ RUN mkdir -p /root/.ssh \
     && ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
 
 WORKDIR /usr/local
-RUN git clone https://github.com/humdrum-tools/humdrum-tools
+RUN git clone git@github.com:humdrum-tools/humdrum-tools.git
 WORKDIR /usr/local/humdrum-tools
 RUN make update
 RUN make
 RUN make install
 
 WORKDIR /usr/local
-RUN git clone https://github.com/craigsapp/humlib
+RUN git clone git@github.com:craigsapp/humlib.git
 WORKDIR /usr/local/humlib
 RUN make update
 RUN make
