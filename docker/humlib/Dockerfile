@@ -19,6 +19,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR  /usr/local
+
 RUN git clone https://github.com/humdrum-tools/humdrum-tools.git
 RUN sed -i -e 's/git@github\.com:/https:\/\/github\.com\//g' humdrum-tools/.gitmodules
 RUN (cd humdrum-tools && make update)
@@ -30,4 +31,4 @@ RUN (cd humlib && make)
 
 WORKDIR /app
 
-ENV PATH="/usr/local/humdrum-tools/humdrum/bin:/usr/local/humdrum-tools/humextra/bin:${PATH}"
+ENV PATH="/usr/local/humdrum-tools/humdrum/bin:/usr/local/humdrum-tools/humextra/bin:/usr/local/humlib/bin:${PATH}"
