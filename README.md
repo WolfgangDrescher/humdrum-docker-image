@@ -1,4 +1,4 @@
 # Humdrum Docker Image
 
-* https://hub.docker.com/repository/docker/wolfgangdrescher/humdrum
-* https://hub.docker.com/repository/docker/wolfgangdrescher/humlib
+* https://ghcr.io/wolfgangdrescher/humdrum
+* https://ghcr.io/wolfgangdrescher/humlib
