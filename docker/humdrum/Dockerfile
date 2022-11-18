@@ -17,7 +17,9 @@ RUN apt-get update \
         unzip \
     && rm -rf /var/lib/apt/lists/*
 
-ADD humdrum-tools /usr/local/humdrum-tools
+RUN git clone https://github.com/humdrum-tools/humdrum-tools.git
+RUN sed -i -e 's/git@github.com:/https:\/\/github.com\//g' humdrum-tools/.gitmodules
+RUN (cd /usr/local/humdrum-tools && make update)
 RUN (cd /usr/local/humdrum-tools && make)
 RUN (cd /usr/local/humdrum-tools && make install)
 
