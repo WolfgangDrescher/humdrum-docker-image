@@ -27,7 +27,6 @@ RUN (cd humdrum-tools && make install)
 
 RUN git clone https://github.com/craigsapp/humlib.git
 RUN (cd humlib && make)
-RUN (cd humlib && make install)
 
 WORKDIR /app
 
