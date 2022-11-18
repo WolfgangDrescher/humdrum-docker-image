@@ -22,7 +22,7 @@ jobs:
             -
                 name: Deploy
                 run: |
-                    TAG="ghcr.io/WolfgangDrescher/$SCHEME"
+                    TAG="ghcr.io/wolfgangdrescher/$SCHEME"
                     VERSION="$(date "+%Y%m%d")"
                     docker tag $SCHEME $TAG:$VERSION
                     docker tag $SCHEME $TAG:latest
