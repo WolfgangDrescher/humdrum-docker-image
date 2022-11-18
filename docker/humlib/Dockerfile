@@ -24,9 +24,7 @@ RUN (cd /usr/local/humdrum-tools && make update)
 RUN (cd /usr/local/humdrum-tools && make)
 RUN (cd /usr/local/humdrum-tools && make install)
 
-WORKDIR /usr/local
-ADD humlib /usr/local/humlib
-WORKDIR /usr/local/humlib
+RUN git clone https://github.com/craigsapp/humlib.git
 RUN (cd /usr/local/humlib && make)
 RUN (cd /usr/local/humlib && make install)
 
