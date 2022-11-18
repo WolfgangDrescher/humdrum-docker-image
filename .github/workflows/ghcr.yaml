@@ -16,11 +16,6 @@ jobs:
         steps:
             -
                 name: Configure SSH
-                env:
-                HOST: ${{ secrets.HOST }}
-                USERNAME: ${{ secrets.USERNAME }}
-                SSH_KEY: ${{ secrets.SSH_KEY }}
-                PORT: ${{ secrets.PORT }}
                 run: |
                     mkdir -p ~/.ssh/
                     ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
