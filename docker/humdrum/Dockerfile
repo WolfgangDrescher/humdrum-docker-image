@@ -19,7 +19,7 @@ RUN apt-get update \
 
 WORKDIR  /usr/local
 RUN git clone https://github.com/humdrum-tools/humdrum-tools.git
-RUN sed -i -e 's/git@github.com:/https:\/\/github.com\//g' humdrum-tools/.gitmodules
+RUN sed -i -e 's/git@github\.com:/https:\/\/github\.com\//g' humdrum-tools/.gitmodules
 RUN (cd humdrum-tools && make update)
 RUN (cd humdrum-tools && make)
 RUN (cd humdrum-tools && make install)
