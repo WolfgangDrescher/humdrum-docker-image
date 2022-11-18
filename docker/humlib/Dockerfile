@@ -18,24 +18,15 @@ RUN apt-get update \
         sudo \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /root/.ssh \
-    && chmod 0700 /root/.ssh \
-    && ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa \
-    && ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
+ADD humdrum-tools /usr/local/humdrum-tools
+RUN (cd /usr/local/humdrum-tools && make)
+RUN (cd /usr/local/humdrum-tools && make install)
 
 WORKDIR /usr/local
-RUN git clone git@github.com:humdrum-tools/humdrum-tools.git
-WORKDIR /usr/local/humdrum-tools
-RUN make update
-RUN make
-RUN make install
-
-WORKDIR /usr/local
-RUN git clone git@github.com:craigsapp/humlib.git
+ADD humlib /usr/local/humlib
 WORKDIR /usr/local/humlib
-RUN make update
-RUN make
-RUN make install
+RUN (cd /usr/local/humlib && make)
+RUN (cd /usr/local/humlib && make install)
 
 WORKDIR /app
 

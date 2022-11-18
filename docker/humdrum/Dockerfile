@@ -17,17 +17,9 @@ RUN apt-get update \
         unzip \
     && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /root/.ssh \
-    && chmod 0700 /root/.ssh \
-    && ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa \
-    && ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
-
-WORKDIR /usr/local
-RUN git clone git@github.com:humdrum-tools/humdrum-tools.git
-WORKDIR /usr/local/humdrum-tools
-RUN make update
-RUN make
-RUN make install
+ADD humdrum-tools /usr/local/humdrum-tools
+RUN (cd /usr/local/humdrum-tools && make)
+RUN (cd /usr/local/humdrum-tools && make install)
 
 WORKDIR /app
 
