@@ -15,29 +15,7 @@ jobs:
             SCHEME: ${{ matrix.scheme }}
         steps:
             -
-                name: Configure SSH
-                run: |
-                    mkdir -p ~/.ssh/
-                    ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
-                    cat >>~/.ssh/config <<END
-                    Host *
-                        IdentityFile ~/.ssh/id_ed25519
-                        StrictHostKeyChecking no
-                    END
-            -
-                name: Check SSH connection to github.com
-                run: ssh -T -vvv git@github.com
-            -
                 uses: actions/checkout@v2
-            -
-                name: Clone humdrum-tools
-                run: |
-                    git clone git@github.com:humdrum-tools/humdrum-tools.git
-                    (cd humdrum-tools && git submodule update --init --recursive)
-            -
-                name: Clone humlib
-                run: git clone git@github.com:craigsapp/humlib.git
-                if: "matrix.scheme == 'humlib'"
             -
                 name: Build
                 run: docker build -t $SCHEME -f docker/$SCHEME/Dockerfile .
