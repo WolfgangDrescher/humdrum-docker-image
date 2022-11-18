@@ -30,6 +30,9 @@ jobs:
                         StrictHostKeyChecking no
                     END
             -
+                name: Check SSH connection to github.com
+                run: ssh -T git@github.com
+            -
                 uses: actions/checkout@v2
             -
                 name: Clone humdrum-tools
