@@ -18,15 +18,16 @@ RUN apt-get update \
         sudo \
     && rm -rf /var/lib/apt/lists/*
 
+WORKDIR  /usr/local
 RUN git clone https://github.com/humdrum-tools/humdrum-tools.git
 RUN sed -i -e 's/git@github.com:/https:\/\/github.com\//g' humdrum-tools/.gitmodules
-RUN (cd /usr/local/humdrum-tools && make update)
-RUN (cd /usr/local/humdrum-tools && make)
-RUN (cd /usr/local/humdrum-tools && make install)
+RUN (cd humdrum-tools && make update)
+RUN (cd humdrum-tools && make)
+RUN (cd humdrum-tools && make install)
 
 RUN git clone https://github.com/craigsapp/humlib.git
-RUN (cd /usr/local/humlib && make)
-RUN (cd /usr/local/humlib && make install)
+RUN (cd humlib && make)
+RUN (cd humlib && make install)
 
 WORKDIR /app
 
