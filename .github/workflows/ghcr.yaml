@@ -27,7 +27,7 @@ jobs:
                 if: "matrix.scheme == 'humlib'"
             -
                 name: Build
-                run: docker build -t $SCHEME docker/$SCHEME
+                run: docker build -t $SCHEME -f docker/$SCHEME/Dockerfile .
             -
                 name: Deploy
                 run: |
